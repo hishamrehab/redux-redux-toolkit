@@ -1,6 +1,7 @@
 const redux = require("redux");
 const createStore = redux.createStore;
 const combineReducers = redux.combineReducers;
+const applyMiddelware = redux.applyMiddleware;
 const ORDER_PIZZA = "ORDER_PIZZA"
 const ORDER_BURGER = "ORDER_BURGER"
 
@@ -20,6 +21,7 @@ const initialStateForPizza = {
 const initialStateForBurger = {
     burgerBuns : 200
 }
+
 
 function orderBurger() {
     return  {
@@ -61,12 +63,14 @@ const rootReducer = combineReducers({
   reducerPizza,
   reducerBurger,
 });
+
 const store = createStore(rootReducer);
+
 
 
 console.log("Initial State" , store.getState());
 
-const unsubscripe = store.subscribe(() => console.log("Updated State" , store.getState()));
+const unsubscripe = store.subscribe(() => {});
 
 store.dispatch(orderPizza());
 store.dispatch(orderPizza());
